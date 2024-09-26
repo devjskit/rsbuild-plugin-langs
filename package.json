@@ -1,0 +1,57 @@
+{
+  "name": "@devjskit/rsbuild-plugin-langs",
+  "version": "0.2.1",
+  "license": "MIT",
+  "description": "Extract Content from JSON Files and Merge into a Multi-Language File",
+  "author": "Billgo <hi@billgo.me>",
+  "bugs": "https://github.com/devjskit/rsbuild-plugin-langs/issues",
+  "repository": "git+ssh://git@github.com:devjskit/rsbuild-plugin-langs.git",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "README.md"],
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      },
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
+    },
+    "./*": "./*"
+  },
+  "scripts": {
+    "prepublishOnly": "bun run build",
+    "build": "bunx rimraf dist && bun run build:esm && bun run build:bun",
+    "build:bun": "bun run bun.build.mjs",
+    "build:esm": "bunx tsup",
+    "start": "bun run --watch examples/index.ts"
+  },
+  "dependencies": {
+    "@rsbuild/core": "^1.1.8",
+    "glob": "^11.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@devjskit/biome-config": "^0.1.14",
+    "@devjskit/copy-files": "^1.0.0",
+    "@devjskit/cross-env": "^1.0.0",
+    "@devjskit/kill-port": "^1.0.0",
+    "@devjskit/rimraf": "^1.0.0",
+    "@types/bun": "^1.1.14",
+    "@types/node": "^22.10.1",
+    "@types/web": "^0.0.186",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "@rsbuild/core": "*"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "type": "node-terminal",
+      "name": "start",
+      "request": "launch",
+      "command": "bun build",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
