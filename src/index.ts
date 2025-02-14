@@ -130,7 +130,7 @@ export const pluginLangs = (options: PluginLangsOptions = {}): RsbuildPlugin => 
     // 匹配 src 目录下所有以 .i18n.json 结尾的以及 i18n.json 文件
     const pattern = options.pattern || "./src/**/{*.i18n.json,i18n.json}";
     const destination = options.destination || "langs";
-    const languages = options.languages || ["en", "zh"];
+    const languages = options.languages || ["en", "zh", "hk"];
 
     const generateFilesAndRebuild = async () => {
       await generateLanguageFiles(pattern, destination, languages, options.prefix);
